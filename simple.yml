@@ -8,6 +8,7 @@
         regexp: '^#?PasswordAuthentication'
         line: 'PasswordAuthentication no'
            
-    - service:
-      name: sshd
-      state: restarted
+    - name: Restart SSH Daemon
+      service:
+        name: sshd
+        state: restarted
