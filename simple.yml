@@ -3,7 +3,10 @@
   
   tasks:
     - name: Disable password login
-        lineinfile: dest=/etc/ssh/sshd_config regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
+        lineinfile: 
+            dest: /etc/ssh/sshd_config
+            regexp: "^#?PasswordAuthentication"
+            line: "PasswordAuthentication no"
         
     - service:
         name: sshd
