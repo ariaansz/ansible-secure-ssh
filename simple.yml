@@ -2,13 +2,11 @@
 - hosts: all
   
   tasks:
-  - name: Disable password login
-      lineinfile:   dest=/etc/ssh/sshd_config 
-                    regexp="^#?PasswordAuthentication"
-                    line="PasswordAuthentication no"
-      notify: 
-        - restart sshd
-  
-  handlers:
-    - name: restart sshd
-      service: name=sshd state=restarted
+      - lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        
+      - service:
+        name: sshd
+        state: restarted
