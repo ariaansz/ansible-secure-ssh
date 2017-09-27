@@ -2,13 +2,20 @@
 - hosts: all
   
   tasks:
-    - name: Disable password login
+    - name: Disable Password Authentication
       lineinfile: 
         dest: /etc/ssh/sshd_config
         regexp: '^#?PasswordAuthentication'
         line: 'PasswordAuthentication no'
       become: true
-           
+    
+    - name: Disable Challenge Response Authentication
+      lineinfile: 
+        dest: /etc/ssh/sshd_config
+        regexp: '^#?ChallengeResponseAuthentication'
+        line: 'ChallengeResponseAuthentication no'
+      become: true
+    
     - name: Restart SSH Daemon
       service:
         name: sshd
