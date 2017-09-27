@@ -11,6 +11,6 @@
            
     - name: Restart SSH Daemon
       service:
-        name: ssh
+        name: sshd
         state: restarted
       become: true
